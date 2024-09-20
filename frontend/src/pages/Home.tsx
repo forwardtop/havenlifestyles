@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 // import { useDispatch } from 'react-redux';
 
+import ImageCarousel from '../components/common/ImageCarousel';
+
 const Home: React.FC = () => {
     // const dispatch = useDispatch();
 
@@ -11,7 +13,7 @@ const Home: React.FC = () => {
     return (
         <React.Fragment>
             <div>
-                coming soon
+                <ImageCarousel />
             </div>
         </React.Fragment>
     );

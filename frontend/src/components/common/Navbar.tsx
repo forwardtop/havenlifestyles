@@ -62,10 +62,6 @@ const Navbar: React.FC = () => {
         };
     }, []);
 
-    useEffect(() => {
-        console.log(searchShow);
-    }, [searchShow])
-
     const controlNavbar = () => {
         if (window.scrollY > 200) {
             if (window.scrollY > lastScrollY) {

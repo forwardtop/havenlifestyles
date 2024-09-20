@@ -35,7 +35,6 @@ const AppRouter: React.FC = () => {
     }, []);
 
     const handleClickBody = (e: any) => {
-        console.log(e.currentTarget);
         if (sidebarShow) {
             dispatch(setSidebarShow(!sidebarShow));
         }
