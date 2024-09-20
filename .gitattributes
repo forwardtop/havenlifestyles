@@ -1,0 +1,26 @@
+# Set the default behavior to automatically normalize line endings.
+* text=auto
+
+# Force LF line endings for JavaScript files.
+*.js text eol=lf
+
+# Force LF line endings for all source code files.
+*.css text eol=lf
+*.html text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+
+# Force CRLF line endings for Windows-specific scripts.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Force LF line endings for Bash scripts.
+*.sh text eol=lf
+
+# Binary files should be treated as binary and not modified.
+*.png binary
+*.jpg binary
+*.gif binary
+*.exe binary
+*.dll binary
