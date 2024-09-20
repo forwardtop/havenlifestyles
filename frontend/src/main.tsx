@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from '@mui/material/styles';
 
 import theme from './theme'; // Import your theme
-import App from './App.tsx';
+import AppRouter from './Router.tsx';
 import store from './reducer/store'; // .ts extension is optional
 
 import './index.css';
@@ -21,7 +21,7 @@ createRoot(rootElement).render(
   <BrowserRouter>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <App />
+        <AppRouter />
         <Toaster />
       </ThemeProvider>
     </Provider>
