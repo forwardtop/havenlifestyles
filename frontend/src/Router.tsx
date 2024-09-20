@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import ArrowUpward from '@mui/icons-material/ArrowUpward';
+
+import { setSidebarShow } from "./slices/commonSlice";
 
 import { Home } from "./pages";
 import Navbar from './components/common/Navbar';
@@ -9,6 +12,9 @@ import Sidebar from "./components/common/Sidebar";
 
 const AppRouter: React.FC = () => {
     const location = useLocation();
+    const dispatch = useDispatch();
+
+    const { sidebarShow } = useSelector((state: any) => state.common)
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -28,8 +34,15 @@ const AppRouter: React.FC = () => {
         };
     }, []);
 
+    const handleClickBody = (e: any) => {
+        console.log(e.currentTarget);
+        if (sidebarShow) {
+            dispatch(setSidebarShow(!sidebarShow));
+        }
+    }
+
     return (
-        <div className="w-screen min-h-screen bg-white flex flex-col font-inter">
+        <div className="w-screen min-h-screen bg-white flex flex-col font-inter" onClick={handleClickBody}>
             {showArrow && (
                 <button
                     className="scroll-to-top"
@@ -38,7 +51,7 @@ const AppRouter: React.FC = () => {
                     <ArrowUpward />
                 </button>
             )}
-            <Navbar  />
+            <Navbar />
             <Sidebar />
             <Routes>
                 <Route path="/" element={<Home />} />
