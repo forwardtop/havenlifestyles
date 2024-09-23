@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, matchPath, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -10,46 +10,47 @@ import {
 } from '@mui/icons-material';
 
 import { setSidebarShow, setSearchShow } from "../../slices/commonSlice";
-import { fetchMainCategories } from '../../services/apis/commonAPI';
+// import { fetchMainCategories } from '../../services/apis/commonAPI';
 
 import { NavbarLinks } from "../../../data/main-menus";
 import logo from '../../assets/Logo/logo-final-1.png';
 
-interface MainMenu {
-    title: string;
-    path?: string;
-    children?: MainMenu[];
-}
+// interface MainMenu {
+//     title: string;
+//     path?: string;
+//     children?: MainMenu[];
+// }
 
 const Navbar: React.FC = () => {
-    const location = useLocation();
+    // const location = useLocation();
     const dispatch = useDispatch();
-    const inputRef = useRef(null);
+    // const inputRef = useRef(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const searchShow = useSelector((state: any) => state.common.searchShow)
 
-    const [mainMenus, setMainMenus] = useState<{ menu: MainMenu }[]>([]);
-    const [loading, setLoading] = useState(false);
+    // const [mainMenus, setMainMenus] = useState<{ menu: MainMenu }[]>([]);
+    const [loading] = useState(false);
     const [email, setEmail] = useState('');
 
-    const fetchMainMenus = async () => {
-        try {
-            setLoading(true);
-            const res = await fetchMainCategories();
-            setMainMenus(res);
-        } catch (error) {
-            console.log("Could not fetch the category list = ", error);
-        }
-        setLoading(false);
-    };
+    // const fetchMainMenus = async () => {
+    //     try {
+    //         setLoading(true);
+    //         const res = await fetchMainCategories();
+    //         setMainMenus(res);
+    //     } catch (error) {
+    //         console.log("Could not fetch the category list = ", error);
+    //     }
+    //     setLoading(false);
+    // };
 
     useEffect(() => {
         // fetchMainMenus();
     }, []);
 
-    const matchRoute = (route: string) => {
-        return matchPath({ path: route }, location.pathname);
-    };
+    // const matchRoute = (route: string) => {
+    //     return matchPath({ path: route }, location.pathname);
+    // };
 
     const [showNavbar, setShowNavbar] = useState('top');
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -85,7 +86,9 @@ const Navbar: React.FC = () => {
 
         if (!searchShow) {
             setTimeout(() => {
-                inputRef.current.focus();
+                if (inputRef.current) {
+                    inputRef.current.focus();
+                }
             }, 500)
         }
     }

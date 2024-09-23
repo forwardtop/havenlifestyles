@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import ArrowUpward from '@mui/icons-material/ArrowUpward';
 
 import Home from './pages/Home';
 
 const App: React.FC = () => {
-  const user = useSelector((state: any) => state.profile); // Ensure you have RootState defined
+  // const user = useSelector((state: any) => state.profile); // Ensure you have RootState defined
 
   const location = useLocation();
   useEffect(() => {

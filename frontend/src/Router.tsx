@@ -1,6 +1,5 @@
-
 import { useEffect, useState } from "react"
-import { Route, Routes, useLocation, Link } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 
 import ArrowUpward from '@mui/icons-material/ArrowUpward'
@@ -50,7 +49,7 @@ function App() {
         }
     }, [showArrow])
 
-    const handleClickBody = (e: any) => {
+    const handleClickBody = () => {
         if (sidebarShow) {
             dispatch(setSidebarShow(!sidebarShow));
         }

@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Link, matchPath, useLocation } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { Link } from 'react-router-dom'
+// import { useDispatch, useSelector } from 'react-redux'
 
 import logo from '../../assets/Logo/logo-final-1.png'
 import { FooterLinks } from '../../../data/main-menus'
@@ -16,11 +16,19 @@ import {
 } from '@mui/icons-material'
 
 const Footer: React.FC = () => {
-    const iconsMap = {
-        home: <Home style={{ fontSize: '15px' }} />,
-        article: <Article style={{ fontSize: '15px' }} />,
-        info: <Info style={{ fontSize: '15px' }} />,
-        contacts: <Contacts style={{ fontSize: '15px' }} />,
+    interface IconsMap {
+        home: JSX.Element;
+        article: JSX.Element;
+        info: JSX.Element;
+        contacts: JSX.Element;
+        // Add other icons as needed
+    }
+
+    const iconsMap: IconsMap = {
+        'home': <Home style={{ fontSize: '15px' }} />,
+        'article': <Article style={{ fontSize: '15px' }} />,
+        'info': <Info style={{ fontSize: '15px' }} />,
+        'contacts': <Contacts style={{ fontSize: '15px' }} />,
     };
 
     return (
@@ -29,16 +37,17 @@ const Footer: React.FC = () => {
                 <Link to="/" className="py-6">
                     <img src={logo} width={195} height={41} loading='lazy' alt="Haven log" />
                 </Link>
-                <ul className="flex flex-row flex-wrap">
-                    {
-                        FooterLinks.map((link, index) => (
-                            <li key={index} className="mr-[20px] flex justify-center items-center uppercase">
-                                {iconsMap[link.icon]}
-                                <a href={link.path} className="ml-[5px]">{link.title}</a>
-                            </li>
-                        ))
-                    }
+                <ul className="flex flex-wrap justify-center">
+                    {FooterLinks.map((link, index) => (
+                        <li key={index} className="mr-[20px] flex items-center uppercase">
+                            {iconsMap[link.icon as keyof IconsMap]} {/* Ensure iconsMap has the icon */}
+                            <a href={link.path} className="ml-[5px] text-blue-500 hover:underline">
+                                {link.title}
+                            </a>
+                        </li>
+                    ))}
                 </ul>
+
                 <ul className="social-icons flex justify-center items-center my-[20px]">
                     <li className="px-[15px]">
                         <Link to={''}>
