@@ -81,7 +81,7 @@ const SideBar = () => {
           </Box>
         </MenuItem>
       </Menu>
-      {!collapsed && (
+      {/* {!collapsed && (
         <Box
           sx={{
             display: "flex",
@@ -109,7 +109,7 @@ const SideBar = () => {
             </Typography>
           </Box>
         </Box>
-      )}
+      )} */}
 
       <Box mb={5} pl={collapsed ? undefined : "5%"}>
         <Menu
