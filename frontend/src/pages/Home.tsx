@@ -21,7 +21,7 @@ const Home: React.FC = () => {
                 <div className="top-features flex flex-col sm:flex-col md:flex-row w-full mt-[30px]">
                     <div className="top-feature-list md:w-2/3 sm:w-full flex flex-col md:pr-[20px]">
                         <div className="top-feature-title border-b border-gray py-[5px] mb-[10px]">
-                            <HighlightText text={"TOP FEATURES"} textSize={'text-4xl'} color={'text-red-500'} />
+                            <HighlightText text={"TOP FEATURES"} textSize={'text-4xl'} />
                             {/* <p className="text-2xl font-sofia uppercase">top features</p> */}
                         </div>
                         <div className="w-full flex flex-wrap">
@@ -100,7 +100,8 @@ const Home: React.FC = () => {
             <div className="relative mx-auto flex flex-col w-11/12 lg:w-7/12 md:w-9/12 max-w-maxContent items-center justify-between">
                 <div className="latest-post flex flex-col sm:flex-col md:flex-row w-full my-[20px]">
                     <div className="top-feature-list md:w-1/3 sm:w-full">
-                        <h3 className="uppercase text-center mb-[20px]">latest posts</h3>
+                        {/* <h3 className="uppercase text-center mb-[20px]">latest posts</h3> */}
+                        <HighlightText text={'LATEST POSTS'} textSize={'text-md'} />
                         <ul className="flex flex-col flex-wrap">
                             {
                                 latestPosts.map((latest, index) => (
@@ -126,7 +127,8 @@ const Home: React.FC = () => {
                         </ul>
                     </div>
                     <div className="follow-us md:w-2/3 sm:w-full md:pl-[20px]">
-                        <h3 className="uppercase border-b border-gray pb-[10px] mb-[20px]">curated homes</h3>
+                        {/* <h3 className="uppercase border-b border-gray pb-[10px] mb-[20px]">curated homes</h3> */}
+                        <HighlightText text={'CURATED HOMES'} textSize={'text-md'} />
                         <ul className="flex flex-col w-full">
                             {
                                 curatedHomes.map((item, index) => {
