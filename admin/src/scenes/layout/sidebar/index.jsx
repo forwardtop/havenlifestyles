@@ -75,9 +75,9 @@ const SideBar = () => {
                 </Typography>
               </Box>
             )}
-            <IconButton onClick={() => setCollapsed(!collapsed)}>
+            {/* <IconButton onClick={() => setCollapsed(!collapsed)}>
               <MenuOutlined />
-            </IconButton>
+            </IconButton> */}
           </Box>
         </MenuItem>
       </Menu>
