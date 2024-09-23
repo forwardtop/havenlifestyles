@@ -228,6 +228,10 @@ body {
   border-radius: 8px;
 }
 
+.pink-gradient-button {
+  background: linear-gradient(103deg, #FC6668 0%, #E10489 100%);
+}
+
 .subscribe-button {
   background: linear-gradient(103deg, #FC6668 0%, #E10489 100%);
 }
@@ -369,4 +373,8 @@ body {
   width: 20px;
   height: 20px;
   background: #fff;
+}
+
+.curated-list li:first-child {
+  /* padding-top: 0; */
 }

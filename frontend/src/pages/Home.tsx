@@ -39,7 +39,7 @@ const Home: React.FC = () => {
                                             <div className="absolute left-[10px] top-[10px] w-full">
                                                 {
                                                     feature.labels.map((label, lIndex) => (
-                                                        <label className="bg-black text-white px-[5px] py-[3px] mr-[3px]" key={lIndex}>{label}</label>
+                                                        <label className="bg-blue-500 text-white px-[5px] py-[3px] mr-[3px]" key={lIndex}>{label}</label>
                                                     ))
                                                 }
                                             </div>
@@ -106,10 +106,10 @@ const Home: React.FC = () => {
                             {
                                 latestPosts.map((latest, index) => (
                                     <li className="w-full flex justify-start items-center border-b border-gray py-[10px]" key={index}>
-                                        <a className="w-full sm:w-1/3 md:w-1/3 pr-[10px]" href={latest.link}>
+                                        <a className="w-1/3 pr-[10px]" href={latest.link}>
                                             <img src={latest.image} className="object-cover" />
                                         </a>
-                                        <div className="flex flex-col w-full sm:w-2/3 md:w-2/3">
+                                        <div className="flex flex-col w-2/3">
                                             <div className="labes flex w-full">
                                                 {
                                                     latest.labels.map((label, lIndex) => (
@@ -126,16 +126,16 @@ const Home: React.FC = () => {
                             }
                         </ul>
                     </div>
-                    <div className="follow-us md:w-2/3 sm:w-full md:pl-[20px]">
+                    <div className="follow-us md:w-2/3 sm:w-full md:pl-[20px] my-[20px] sm:my-0">
                         {/* <h3 className="uppercase border-b border-gray pb-[10px] mb-[20px]">curated homes</h3> */}
                         <HighlightText text={'CURATED HOMES'} textSize={'text-md'} />
-                        <ul className="flex flex-col w-full">
+                        <ul className="flex flex-col w-full curated-list">
                             {
                                 curatedHomes.map((item, index) => {
                                     return item.type === '1'
                                         ?
                                         (
-                                            <li className="flex flex-col w-full py-[20px] border-b border-gray" key={index}>
+                                            <li className="flex flex-col w-full py-[10px] sm:py-[20px] border-b border-gray" key={index}>
                                                 <a href="item.link" className="max-h-[410px] overflow-hidden">
                                                     <img src={item.image} />
                                                 </a>
@@ -150,11 +150,14 @@ const Home: React.FC = () => {
                                                         </a>
                                                     </div>
                                                 </div>
+                                                <div className="flex justify-center items-center w-full">
+                                                    <button className="pink-gradient-button wave-button relative rounded mt-2 p-2 text-white">Read More</button>
+                                                </div>
                                             </li>
                                         )
                                         :
                                         (
-                                            <li className="flex flex-col sm:flex-row w-full py-[20px] border-b border-gray" key={index}>
+                                            <li className="flex flex-col sm:flex-row w-full py-[10px] sm:py-[20px] border-b border-gray" key={index}>
                                                 <a href={item.link} className="w-full sm:w-2/4 sm:pr-[10px]">
                                                     <img src={item.image} />
                                                 </a>
@@ -164,12 +167,15 @@ const Home: React.FC = () => {
                                                         <span className="text-[12px] text-gray-500 uppercase"> --- {item.date}</span>
                                                     </div>
                                                     <div className="flex justify-start items-start w-full">
-                                                        <a href={item.link} className="text-blue-500 font-bold text-2xl text-left cursor-pointer hover:underline sm:py-[15px]">
+                                                        <a href={item.link} className="text-blue-500 font-bold text-2xl text-left cursor-pointer hover:underline">
                                                             {item.title}
                                                         </a>
                                                     </div>
                                                     <div className="flex justify-start items-start">
-                                                        <p className="line-clamp-6">{item.description}</p>
+                                                        <p className="line-clamp-3">{item.description}</p>
+                                                    </div>
+                                                    <div className="flex justify-center sm:justify-end items-center w-full">
+                                                        <button className="pink-gradient-button wave-button relative rounded mt-2 p-2 text-white">Read More</button>
                                                     </div>
                                                 </div>
                                             </li>
@@ -194,7 +200,7 @@ const Home: React.FC = () => {
                             }}
                             className="w-full rounded-[0.5rem] bg-richblack-800 p-[10px] text-richblack-5 outline-none border border-gray rounded-tr-none rounded-br-none w-2/3"
                         />
-                        <button className="subscribe-button wave-button relative text-center text-white p-[11px] uppercase w-2/5 lg:w-[150px] rounded-lg rounded-tl-none rounded-bl-none">
+                        <button className="subscribe-button wave-button relative text-center text-white p-[11px] uppercase w-[150px] rounded-lg rounded-tl-none rounded-bl-none">
                             sign up
                         </button>
                     </div>

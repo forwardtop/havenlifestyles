@@ -22,12 +22,6 @@ interface ImageCarouselProps {
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ items, withDescription }) => {
   const swiperRef = useRef<any>(null);  // Use a ref to control Swiper
 
-  const goToSlide = (index: number) => {
-    if (swiperRef.current) {
-      swiperRef.current.slideTo(index);  // Navigate to the specific index
-    }
-  };
-
   return (
     <div className="w-full h-full relative">
       <Swiper
@@ -68,7 +62,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ items, withDescription })
                       <p className="flex mb-[10px]">
                         {
                           item.labels?.length && item.labels.map((label, labelIndex) => (
-                            <span className="text-white bg-black-500 text-center px-[10px] py-[5px] bg-black mr-[5px] text-[12px]" key={labelIndex}>{label}</span>
+                            <span className="text-white bg-blue-500 text-center px-[10px] py-[5px] mr-[5px] text-[12px]" key={labelIndex}>{label}</span>
                           ))
                         }
                       </p>
@@ -76,7 +70,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ items, withDescription })
                     </motion.div>
 
                     <div className='flex flex-row gap-7 mt-8 text-white items-center justify-center w-full'>
-                      <button className="border border-white p-3">Read More</button>
+                      <button className="pink-gradient-button wave-button relative rounded-lg p-3">Read More</button>
                     </div>
                   </div>
                 </div>
