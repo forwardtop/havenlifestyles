@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
     };
 
     return (
-        <footer className={`flex w-full items-center justify-center border-t border-gray py-[20px] mt-[20px]`}>
+        <footer className={`flex w-full items-center justify-center border-t border-gray py-[20px]`}>
             <div className="flex flex-col w-full justify-center items-center logo">
                 <Link to="/" className="py-6">
                     <img src={logo} width={195} height={41} loading='lazy' alt="Haven log" />
