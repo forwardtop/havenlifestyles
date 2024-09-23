@@ -72,3 +72,26 @@ export const SidebarLinks = [
         path: '',
     },
 ]
+
+export const FooterLinks = [
+    {
+        title: 'Home',
+        path: '',
+        icon: 'home',
+    },
+    {
+        title: 'Articles',
+        path: '',
+        icon: 'article',
+    },
+    {
+        title: 'About Us',
+        path: '',
+        icon: 'info',
+    },
+    {
+        title: 'Contact Us',
+        path: '',
+        icon: 'contacts',
+    },
+]

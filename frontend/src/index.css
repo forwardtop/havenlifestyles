@@ -212,3 +212,7 @@ body {
 .second:hover .second-hover\:opacity-100 {
   opacity: 1;
 }
+
+.font-sofia {
+  font-family: 'sofia-pro' !important;
+}

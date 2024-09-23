@@ -46,12 +46,15 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ items, withDescription })
             <img
               src={item.image}
               alt={`Slide ${item.description}`}
-              className="w-full h-[600px] object-cover"
+              className="w-full h-[600px] object-cover relative"
             />
+            {withDescription && (
+              <div className="absolute bg-black w-full h-full left-0 top-0 opacity-[0.5]"></div>
+            )}
             {
               withDescription && (
                 <div className="w-full h-full absolute left-0 top-0 right-0 z-[1] flex justify-center items-center">
-                  <div className='w-2/4 h-[450px] md:h-[550px] flex flex-col justify-center items-start px-[20px] overflow-hidden'>
+                  <div className='md:w-2/4 sm:w-full h-[450px] md:h-[550px] flex flex-col justify-center items-start px-[20px] overflow-hidden'>
                     <motion.div
                       variants={fadeIn('right', 0.1)}
                       initial='hidden'

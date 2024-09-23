@@ -12,6 +12,7 @@ import PageNotFound from './pages/PageNotFound'
 
 import Navbar from "./components/common/Navbar"
 import Sidebar from "./components/common/Sidebar"
+import Footer from "./components/common/Footer"
 
 
 function App() {
@@ -76,7 +77,7 @@ function App() {
                 {/* Page Not Found (404 Page ) */}
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
-
+            <Footer />
         </div>
     );
 }
