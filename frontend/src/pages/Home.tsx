@@ -1,19 +1,13 @@
-import React, { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+import React, { useEffect, useRef, useState } from 'react';
 
 import ImageCarousel from '../components/common/ImageCarousel';
+import { HomeMainSliders } from '../../data/home-datas'
 
 const Home: React.FC = () => {
-    // const dispatch = useDispatch();
-
-    useEffect(() => {
-        console.log('--- home instructor ---');
-    }, []);
-
     return (
         <React.Fragment>
-            <div>
-                <ImageCarousel />
+            <div className='relative'>
+                <ImageCarousel items={HomeMainSliders} withDescription={true} />
             </div>
         </React.Fragment>
     );

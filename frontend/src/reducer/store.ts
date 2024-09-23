@@ -4,7 +4,7 @@ import authReducer from '../slices/authSlice.ts';
 import profileReducer from '../slices/profileSlice.ts';
 import commonReducer from '../slices/commonSlice.ts';
 
-const store = configureStore({
+const rootReducer = configureStore({
   reducer: {
     auth: authReducer,
     profile: profileReducer,
@@ -12,4 +12,4 @@ const store = configureStore({
   },
 });
 
-export default store;
+export default rootReducer;

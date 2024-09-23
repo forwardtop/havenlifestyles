@@ -1,38 +1,53 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 
-import ArrowUpward from '@mui/icons-material/ArrowUpward';
+import { useEffect, useState } from "react"
+import { Route, Routes, useLocation, Link } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
+
+import ArrowUpward from '@mui/icons-material/ArrowUpward'
 
 import { setSidebarShow } from "./slices/commonSlice";
 
-import { Home } from "./pages";
-import Navbar from './components/common/Navbar';
-import Sidebar from "./components/common/Sidebar";
+import Home from "./pages/Home"
+import PageNotFound from './pages/PageNotFound'
 
-const AppRouter: React.FC = () => {
-    const location = useLocation();
-    const dispatch = useDispatch();
+import Navbar from "./components/common/Navbar"
+import Sidebar from "./components/common/Sidebar"
 
-    const { sidebarShow } = useSelector((state: any) => state.common)
+
+function App() {
+    // Scroll to the top of the page when the component mounts
+    const location = useLocation()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [location.pathname]);
+    }, [location.pathname])
 
-    // Go upward arrow - show, unshow
-    const [showArrow, setShowArrow] = useState<boolean>(false);
+    useEffect(() => {
+        scrollTo(0, 0);
+    }, [location])
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
+    const { sidebarShow } = useSelector((state: any) => state.common)
+
+    // Go upward arrow - show , unshow
+    const [showArrow, setShowArrow] = useState(false)
 
     const handleArrow = () => {
-        setShowArrow(window.scrollY > 500);
-    };
+        if (window.scrollY > 500) {
+            setShowArrow(true)
+        } else setShowArrow(false)
+    }
 
     useEffect(() => {
         window.addEventListener('scroll', handleArrow);
         return () => {
             window.removeEventListener('scroll', handleArrow);
-        };
-    }, []);
+        }
+    }, [showArrow])
 
     const handleClickBody = (e: any) => {
         if (sidebarShow) {
@@ -42,21 +57,28 @@ const AppRouter: React.FC = () => {
 
     return (
         <div className="w-screen min-h-screen bg-white flex flex-col font-inter" onClick={handleClickBody}>
+            {/* go upward arrow */}
             {showArrow && (
                 <button
-                    className="scroll-to-top"
                     onClick={() => window.scrollTo(0, 0)}
+                    className={`bg-blue-500 hover:bg-blue-600 hover:scale-110 p-3 text-lg text-white rounded-full fixed right-3 z-10 duration-500 ease-in-out 
+                        ${showArrow ? 'bottom-6' : '-bottom-24'}`}
                 >
                     <ArrowUpward />
                 </button>
             )}
             <Navbar />
             <Sidebar />
+
             <Routes>
                 <Route path="/" element={<Home />} />
+
+                {/* Page Not Found (404 Page ) */}
+                <Route path="*" element={<PageNotFound />} />
             </Routes>
+
         </div>
     );
-};
+}
 
-export default AppRouter;
+export default App;

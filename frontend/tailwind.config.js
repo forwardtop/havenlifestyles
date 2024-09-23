@@ -1,12 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [],
   purge: ['./index.html', './src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   // darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+    fontFamily: {
+      inter: ["Inter", "sans-serif"],
+      "edu-sa": ["Edu SA Beginner", "cursive"],
+      mono: ["Roboto Mono", "monospace"],
+      boogaloo: ['Boogaloo', "sans-serif"]
+    },
   },
-
   variants: {
     extend: {
       animation: {
@@ -26,5 +31,4 @@ export default {
     },
   },
   plugins: [],
-}
-
+};

@@ -1,40 +1,98 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
 
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/swiper-bundle.css';
+import { motion } from 'framer-motion'
+// import { Link } from 'react-router-dom';
 
-const ImageCarousel: React.FC = () => {
-    return (
-        <Carousel autoPlay infiniteLoop showThumbs={false}>
-          <div>
-            <img src="https://via.placeholder.com/600x300/FF5733/FFFFFF?text=Slide+1" alt="Slide 1" />
-            <p className="legend">Slide 1</p>
+// import {
+//     ArrowForward
+// } from "@mui/icons-material";
+
+// import HighlightText from '../../components/Home/HighlightText';
+import { fadeIn } from '../../components/common/MotionFrameVariendts';
+
+interface ImageCarouselProps {
+  items: { image: string, labels: string[], description: string }[];
+  withDescription: boolean;
+}
+
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ items, withDescription }) => {
+  const swiperRef = useRef<any>(null);  // Use a ref to control Swiper
+
+  const goToSlide = (index: number) => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(index);  // Navigate to the specific index
+    }
+  };
+
+  return (
+    <div className="w-full h-full relative">
+      <Swiper
+        spaceBetween={50}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        navigation={false}
+        loop={true}  // Infinite loop
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+      >
+        {items.map((item, index) => (
+          <SwiperSlide key={index}>
+            <img
+              src={item.image}
+              alt={`Slide ${item.description}`}
+              className="w-full h-[600px] object-cover"
+            />
+            {
+              withDescription && (
+                <div className="w-full h-full absolute left-0 top-0 right-0 z-[1] flex justify-center items-center">
+                  <div className='w-2/4 h-[450px] md:h-[550px] flex flex-col justify-center items-start px-[20px] overflow-hidden'>
+                    <motion.div
+                      variants={fadeIn('right', 0.1)}
+                      initial='hidden'
+                      whileInView={'show'}
+                      viewport={{ once: false, amount: 0.1 }}
+                      className="text-left text-white "
+                    >
+                      <p className="flex mb-[10px]">
+                        {
+                          item.labels?.length && item.labels.map((label, labelIndex) => (
+                            <span className="text-white bg-black-500 text-center px-[10px] py-[5px] bg-black mr-[5px] text-[12px]" key={labelIndex}>{label}</span>
+                          ))
+                        }
+                      </p>
+                      <h1 className="text-white font-bold text-3xl">{item.description}</h1>
+                    </motion.div>
+
+                    <div className='flex flex-row gap-7 mt-8 text-white items-center justify-center w-full'>
+                      <button className="border border-white p-3">Read More</button>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <div className="mt-4 flex justify-center space-x-2 absolute w-full bottom-[20px] z-[1]">
+        {items.map((_, index) => (
+          <div
+            key={index}
+            onClick={() => goToSlide(index)}
+            className="w-5 h-5 rounded-full bg-white border border-color-black cursor-pointer flex items-center justify-center text-white hover:bg-gray-700 transition"
+          >
+            {/* {index + 1} */}
           </div>
-          <div>
-            <img src="https://via.placeholder.com/600x300/33FF57/FFFFFF?text=Slide+2" alt="Slide 2" />
-            <p className="legend">Slide 2</p>
-          </div>
-          <div>
-            <img src="https://via.placeholder.com/600x300/5733FF/FFFFFF?text=Slide+3" alt="Slide 3" />
-            <p className="legend">Slide 3</p>
-          </div>
-        </Carousel>
-
-        // <Swiper
-        //     spaceBetween={50}
-        //     slidesPerView={1}
-        //     navigation  // Enable navigation buttons
-        //     pagination={{ clickable: true }}  // Enable pagination (dots)
-        //     loop={true}  // Infinite loop
-        // >
-        //     <SwiperSlide><img src="https://via.placeholder.com/600x300/FF5733/FFFFFF?text=Slide+1" alt="Slide 1" /></SwiperSlide>
-        //     <SwiperSlide><img src="https://via.placeholder.com/600x300/33FF57/FFFFFF?text=Slide+2" alt="Slide 2" /></SwiperSlide>
-        //     <SwiperSlide><img src="https://via.placeholder.com/600x300/5733FF/FFFFFF?text=Slide+3" alt="Slide 3" /></SwiperSlide>
-        // </Swiper>
-    );
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default ImageCarousel;
