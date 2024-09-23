@@ -2,11 +2,12 @@ import React from 'react';
 
 interface HighlightTextProps {
   text: string;
+  textSize: string;
 }
 
-const HighlightText: React.FC<HighlightTextProps> = ({ text }) => {
+const HighlightText: React.FC<HighlightTextProps> = ({ text, textSize }) => {
   return (
-    <span className="font-bold text-richblue-200 gradient_color">
+    <span className={`font-bold  gradient_color ${textSize}`}>
       {text}
     </span>
   );

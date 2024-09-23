@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import 'swiper/swiper-bundle.css';
 
 import { motion } from 'framer-motion'
@@ -36,9 +37,11 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ items, withDescription })
         navigation={false}
         loop={true}  // Infinite loop
         autoplay={{
-          delay: 3000,
+          delay: 4000,
           disableOnInteraction: false,
         }}
+        speed={1000}
+        modules={[Autoplay, Pagination, Navigation]} // Add modules like this
         onSwiper={(swiper) => (swiperRef.current = swiper)}
       >
         {items.map((item, index) => (
@@ -56,10 +59,10 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ items, withDescription })
                 <div className="w-full h-full absolute left-0 top-0 right-0 z-[1] flex justify-center items-center">
                   <div className='md:w-2/4 sm:w-full h-[450px] md:h-[550px] flex flex-col justify-center items-start px-[20px] overflow-hidden'>
                     <motion.div
-                      variants={fadeIn('right', 0.1)}
+                      variants={fadeIn('right', 0.3)}
                       initial='hidden'
                       whileInView={'show'}
-                      viewport={{ once: false, amount: 0.1 }}
+                      viewport={{ once: false, amount: 0.5 }}
                       className="text-left text-white "
                     >
                       <p className="flex mb-[10px]">
@@ -82,18 +85,6 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ items, withDescription })
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <div className="mt-4 flex justify-center space-x-2 absolute w-full bottom-[20px] z-[1]">
-        {items.map((_, index) => (
-          <div
-            key={index}
-            onClick={() => goToSlide(index)}
-            className="w-5 h-5 rounded-full bg-white border border-color-black cursor-pointer flex items-center justify-center text-white hover:bg-gray-700 transition"
-          >
-            {/* {index + 1} */}
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
